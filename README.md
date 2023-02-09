@@ -3,9 +3,13 @@ Set a timer and hibernate a Windows 10 machine through command prompt with this 
 
 # Installation:
 Place "Hibernate Timer.bat" anywhere on your Windows computer. (ie. At a corner on the Desktop.)
+
 Run Command Prompt as Administrator.
+
 Enter "powercfg /h on" and press "Enter".
+
 If no error occurs, then proceed to use Hibernate Timer.bat
+
 
 # Objectives:
 The program will ask for user input 3 times for the timer - the hours, minutes and seconds respectively.
