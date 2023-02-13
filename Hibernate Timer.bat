@@ -7,7 +7,7 @@ SET defaultSecondValue=10
 SET section=init
 SET tempValue=0
 ::Hidden "cooling off" time for cancelling the timer:
-SET extraTime=3
+SET extraTime=5
 
 
 ::Information:
@@ -131,16 +131,3 @@ IF %extraTime% GEQ 0 (
     GOTO :finalCountdown
 )
 shutdown /h
-
-::----------------------------------------
-::Replaced by :finalCountdown
-::ECHO Hibernating (4)...
-::timeout /t 1 /nobreak >NUL
-::ECHO Hibernating (3)...
-::timeout /t 1 /nobreak >NUL
-::ECHO Hibernating (2)...
-::timeout /t 1 /nobreak >NUL
-::ECHO Hibernating (1)...
-::timeout /t 1 /nobreak >NUL
-::ECHO Hibernating (0)...
-::shutdown /h
