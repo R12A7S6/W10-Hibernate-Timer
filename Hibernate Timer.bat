@@ -6,9 +6,13 @@ SET defaultValue=0
 SET defaultSecondValue=10
 SET section=init
 SET tempValue=0
+::Hidden "cooling off" time for cancelling the timer:
+SET extraTime=3
+
 
 ::Information:
-ECHO This program will accept an input to start a countdown to hibernate this computer. There will be an extra 5 seconds at the end before Hibernation starts.
+ECHO This program will accept an input to start a countdown to hibernate this computer.
+ECHO There will be an extra 5 seconds at the end before Hibernation starts. (To change this, edit "extraTime")
 ECHO You may cancel the countdown any time with Ctrl+C.
 ECHO -------------------------
 ECHO Note: Leave blank for 0.
@@ -67,12 +71,12 @@ IF "%section%"=="s" (
 )
 
 SET "string="
+
 :stringOut
 SET plural=s
 
 ::Code note: Below does not use AND/OR because they are unsupported by BAT
 ::           It's basically a nested IF at the moment.
-::           Slightly unsure how it's working
 :: Use EQU for == ?
 IF NOT %tempValue%==1 IF NOT %tempValue%==0 (
     SET word=%word%%plural%
@@ -119,15 +123,24 @@ ECHO Countdown initialised:
 timeout /t %timeR% /nobreak
 
 ::Final Countdown:
-ECHO Hibernating (5)...
-timeout /t 1 /nobreak >NUL
-ECHO Hibernating (4)...
-timeout /t 1 /nobreak >NUL
-ECHO Hibernating (3)...
-timeout /t 1 /nobreak >NUL
-ECHO Hibernating (2)...
-timeout /t 1 /nobreak >NUL
-ECHO Hibernating (1)...
-timeout /t 1 /nobreak >NUL
-ECHO Hibernating (0)...
+:finalCountdown
+IF %extraTime% GEQ 0 (
+    ECHO Hibernating in (%extraTime%^)...
+    timeout /t 1 /nobreak >NUL
+    SET /a extraTime=%extraTime%-1
+    GOTO :finalCountdown
+)
 shutdown /h
+
+::----------------------------------------
+::Replaced by :finalCountdown
+::ECHO Hibernating (4)...
+::timeout /t 1 /nobreak >NUL
+::ECHO Hibernating (3)...
+::timeout /t 1 /nobreak >NUL
+::ECHO Hibernating (2)...
+::timeout /t 1 /nobreak >NUL
+::ECHO Hibernating (1)...
+::timeout /t 1 /nobreak >NUL
+::ECHO Hibernating (0)...
+::shutdown /h
