@@ -22,6 +22,16 @@ Then, the program will execute command prompt's hibernate command.
 * Portable for Windows machines.
 * Allows time to cancel.                (5 hidden seconds are always added after the timer ends.)
 
+# Potential Issues:
+Q: My machine would randomly resume/wake up from the hibernation, why?  
+A: If you have been neglecting Windows updates for a while, then this is caused by a behaviour set by Windows' default group policy. This ~~could~~ should be fixed by simply restarting and installing the neglected update. In extreme situation and for Windows 10 Pro only, you could do the following to stop this particular issue, but you need to be aware that I do not accept any responsibilities as a consequence caused by you following these instructions, and that you are actively compromising the **Security of your outdated Windows**:  
+1. On Windows 10 Pro, open Local Group Policy Editor or run "gpedit.msc"
+2. Navigate to Local Computer Policy/Computer Configuration/Administrative Templates/Windows Components/Windows Update
+3. Double-click on "Enabling Windows Update Power Management to automatically wake up the system to install scheduled updates"
+4. In the new pop-up, at the top left, select Disabled and press OK. The "Help" section on this pop-up also gives a more detailed explanation for this policy.
+5. For the love of your machine's security, remember to finish that update at your soonest.
+
+
 # Background:
 Hibernate is a windows function that I have gotten used to since my own Windows 7 (and possibly XP too) + HDD days. It used to take a minute or more to boot from startup to windows, but hibernation shortened that, AND it lets me preserve a previous session.  
 Hibernate is good. But hibernate WITH a timer is perfect. Whether it is a long installation, a slow download, or a large copy & paste job, a timer gotchu covered. Set a time, and off you go to enjoy life! No more sitting around and waiting for that 100% before hibernating your computer.
