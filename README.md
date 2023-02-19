@@ -25,9 +25,9 @@ Then, the program will execute command prompt's hibernate command.
 # Potential Issues:
 Q: My machine would randomly resume/wake up from the hibernation, why?  
 A: If you have been neglecting Windows updates for a while, then this is caused by a behaviour set by Windows' default group policy. This ~~could~~ should be fixed by simply restarting and installing the neglected update. In extreme situation and for Windows 10 Pro only, you could do the following to stop this particular issue, but you need to be aware that I do not accept any responsibilities as a consequence caused by you following these instructions, and that you are actively compromising the **Security of your outdated Windows**:  
-1. On Windows 10 Pro, open Local Group Policy Editor or run "gpedit.msc"
+1. On Windows 10 Pro, open Local Group Policy Editor or run "gpedit.msc".
 2. Navigate to Local Computer Policy/Computer Configuration/Administrative Templates/Windows Components/Windows Update
-3. Double-click on "Enabling Windows Update Power Management to automatically wake up the system to install scheduled updates"
+3. Double-click on "Enabling Windows Update Power Management to automatically wake up the system to install scheduled updates". (This policy's name is as of Windows 10 Pro version 21H2.) 
 4. In the new pop-up, at the top left, select Disabled and press OK. The "Help" section on this pop-up also gives a more detailed explanation for this policy.
 5. For the love of your machine's security, remember to finish that update at your soonest.
 
