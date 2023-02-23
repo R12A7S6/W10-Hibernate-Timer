@@ -3,8 +3,9 @@ SETLOCAL enabledelayedexpansion
 
 ::Default values:
 SET defaultValue=0
-SET defaultSecondValue=10
-SET section=init
+SET defaultSeconds=10
+
+SET section=h
 SET tempValue=0
 ::Hidden "cooling off" time for cancelling the timer:
 SET extraTime=5
@@ -22,6 +23,9 @@ ECHO.
 ::Prompts:
 ::>>Here<<
 ::Reuse a single prompt through flags?
+:Prompt
+
+
 
 :Hour
 ECHO Please input countdown length in hours: 
@@ -37,7 +41,7 @@ GOTO Logic
 
 :Second
 ECHO Please input countdown length in seconds: (Leaving this blank will add 10 seconds to the countdown)
-SET /p timeS= || Set timeS=defaultSecondValue
+SET /p timeS= || Set timeS=defaultSeconds
 SET section=s
 GOTO Logic
 
@@ -64,8 +68,8 @@ IF "%section%"=="m" (
 )
 
 IF "%section%"=="s" (
-    IF %timeS%==defaultSecondValue (
-        SET tempValue=%defaultSecondValue%
+    IF %timeS%==defaultSeconds (
+        SET tempValue=%defaultSeconds%
     ) ELSE (
         SET tempValue=%timeS%
     )
