@@ -31,6 +31,7 @@ After that, the program will execute command prompt's hibernate command.
 
 # Potential Issues:
 Q: My machine would randomly resume/wake up from the hibernation, why?  
+
 A: By default, Windows 10 (or at least the Pro version) has the power to wake a machine through the "UpdateOrchestrator" tasks (Task Scheduler > Task Scheduler Library/Microsoft/Windows/UpdateOrchestrator) or the "Maintenance Activator". And there might be more that I am not aware of. You could try one of two things, or both. But note that I will not accept any responsibilities as a consequence caused by these instructions. **Delaying Windows update has the consequence of Windows being vulnerable to exploits.**  
 1. You could try disabling wake timers. To do that:
    1. Open up your Power Options. ("Control Panel/Hardware and Sound/Power Options/Edit Power Plan". Then click on "Change advanced power settings".)
@@ -45,7 +46,6 @@ A: By default, Windows 10 (or at least the Pro version) has the power to wake a 
    3. Double-click on "Enabling Windows Update Power Management to automatically wake up the system to install scheduled updates". (This policy's name is as of Windows 10 Pro version 21H2.) 
    4. In the new pop-up, at the top left, select Disabled and press OK. The "Help" section on this pop-up also gives a more detailed explanation for this policy.
    5. For the love of your machine's security, remember to finish that update at your soonest.
-
 
 # Background:
 Hibernate is a windows function that I have gotten used to since my own Windows 7 (and possibly XP too) + HDD days. It used to take a minute or more to boot from startup to windows, but hibernation shortened that, AND it lets me preserve a previous session.  
