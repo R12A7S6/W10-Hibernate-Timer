@@ -20,6 +20,9 @@ ECHO -------------------------
 ECHO.
 
 ::Prompts:
+::>>Here<<
+::Reuse a single prompt through flags?
+
 :Hour
 ECHO Please input countdown length in hours: 
 SET /p timeH= || Set timeH=defaultValue
