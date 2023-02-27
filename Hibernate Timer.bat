@@ -1,14 +1,20 @@
 @ECHO OFF
 SETLOCAL enabledelayedexpansion
 
-::Default values:
+::Default value for no input:
 SET defaultValue=0
+
+::Default timer if no input for hour, minute and second:
 SET defaultSeconds=10
 
-SET section=h
-SET tempValue=0
-::Hidden "cooling off" time for cancelling the timer:
+::Initial section flag: (h)our, (m)inute, (s)econd
+SET section=hours
+
+::Hidden "cooling off" seconds for cancelling the timer:
 SET extraTime=5
+
+SET tempValue=0
+SET timeUnit=0
 
 
 ::Information:
@@ -24,7 +30,17 @@ ECHO.
 ::>>Here<<
 ::Reuse a single prompt through flags?
 :Prompt
+ECHO Please input countdown length in %section%:
+SET /p timeUnit= || SET timeH=defaultValue
+::Same as original
 
+::Option 2 - Use ELSE IF:
+IF "%section%"=="second" (SET timeS=defaultSeconds) ELSE IF (
+::Least work
+
+::Option 3 - Use Default:
+SET /p timeUnit= || SET timeUnit=defaultValue
+::Handle defaultSeconds in logic
 
 
 :Hour
