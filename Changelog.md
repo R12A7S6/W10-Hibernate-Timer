@@ -1,7 +1,7 @@
 # One_for_Three_Prompt Branch:
-Shaved 14 lines of code by reusing a single prompt for the hour, minute and second prompts.
+Shaved some lines by reusing a single prompt for the hour, minute and second prompts.
 Moved timeout before the ECHO in the finalCountdown section.
-defaultSeconds is no longer used.
+defaultSeconds and tempValue are no longer used.
 
 # Ver 1.1:
 _13/02/2023_
@@ -15,7 +15,5 @@ _20/09/2021_
 Release version.
 
 Possible ToDo:
-1) Tidying.
-2) Revisit and clarify the Calculation section.
-3) Check for non-numeric input and produce a warning if applicable.
-4) Better variable names
+1) Revisit and clarify the Calculation section.
+2) Check for non-numeric input and produce a warning if applicable.
