@@ -25,9 +25,8 @@ After that, the program will execute command prompt's hibernate command.
 # Features:
 * Input for the timer can be made concisely.
 * Does not require Java; few, if any dependencies.
-* Portable for Windows machines.
-* Preset default timer. (10 seconds)
-* Allows time to cancel.
+* Portable for most Windows machines.
+* Extra time at the end to stop the process (Edit the variable "extraTime" at the top to set a different time).
 
 # Potential Issues:
 Q: My machine would randomly resume/wake up from the hibernation, why?  
