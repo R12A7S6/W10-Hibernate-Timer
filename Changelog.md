@@ -1,4 +1,6 @@
-# One_for_Three_Prompt Branch:
+# Ver 1.2:
+_26/04/2023_
+
 Shaved some lines by reusing a single prompt for the hour, minute and second prompts.
 Moved timeout before the ECHO in the finalCountdown section.
 defaultSeconds and tempValue are no longer used.
