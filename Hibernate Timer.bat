@@ -3,16 +3,15 @@ SETLOCAL enabledelayedexpansion
 
 ::Default value for no input:
 SET defaultValue=0
+SET timeValue=0
 
-::Initial section flag. Will change to minute and second as the code runs.
-SET section=hour
+::Initial timeUnit flag. Will change to minute and second as the code runs.
+SET timeUnit=hour
 SET plural=s
+SET "string="
 
 ::Hidden "cooling off" seconds for cancelling the timer:
 SET extraTime=7
-
-SET tempValue=0
-SET timeUnit=0
 
 
 ::Information:
@@ -26,59 +25,46 @@ ECHO.
 
 
 ::Prompts:
-::>>Here<<
-::Reuse a single prompt through flags?
 :Prompt
-ECHO Please input countdown length in %section%%plural%:
-SET /p timeUnit= || SET timeUnit=defaultValue
+ECHO Please input countdown length in %timeUnit%%plural%:
+SET /p timeValue= || SET timeValue=%defaultValue%
 GOTO Logic
 
 
 ::Misc Logics:
 :Logic
-IF %timeUnit%==defaultValue (
-    SET tempValue=%defaultValue%
-) ELSE (
-    SET tempValue=%timeUnit%
+IF "%timeUnit%"=="hour" (
+    SET timeH=%timeValue%
 )
-
-IF "%section%"=="hour" (
-    SET timeH=%timeUnit%
+IF "%timeUnit%"=="minute" (
+    SET timeM=%timeValue%
 )
-IF "%section%"=="minute" (
-    SET timeM=%timeUnit%
-)
-IF "%section%"=="second" (
-    SET timeS=%timeUnit%
+IF "%timeUnit%"=="second" (
+    SET timeS=%timeValue%
 )
 
 
 :stringOut
-
-::Code note: Below does not use AND/OR because they are unsupported by BAT
-::           It's basically a nested IF at the moment.
-:: Use EQU for == ?
-
-IF NOT %tempValue%==1 IF NOT %tempValue%==0 (
-    SET word=%section%%plural%
+IF %timeValue% GTR 1 (
+    SET word=%timeUnit%%plural%
 ) ELSE (
-    SET word=%section%
+    SET word=%timeUnit%
 )
 
-SET tempString=%string% %tempValue% %word%
+SET tempString=%string% %timeValue% %word%
 SET string=%tempString%
 ECHO Entered%string%.
 ECHO.
 ECHO.
 
-IF "%section%"=="second" (
+IF "%timeUnit%"=="second" (
     GOTO Calculation
 ) ELSE (
-    IF "%section%"=="hour" (
-        SET section=minute
+    IF "%timeUnit%"=="hour" (
+        SET timeUnit=minute
     ) ELSE (
-        :: "%section%"=="minute"
-        SET section=second
+        ::"%timeUnit%"=="minute"
+        SET timeUnit=second
     )
     GOTO Prompt
 )
